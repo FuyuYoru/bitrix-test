@@ -1,0 +1,71 @@
+.currency-list {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.currency-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+.currency-table th {
+    background-color: #f6f8fa;
+    color: #333;
+    font-weight: 600;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.currency-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+}
+
+.currency-table tr:hover td {
+    background-color: #f9fafc;
+    transition: background-color 0.2s ease;
+}
+
+.currency-nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.currency-nav a, .currency-nav span {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 0 2px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+}
+
+.currency-nav a:hover {
+    background-color: #eee;
+}
+
+.currency-nav .bx-pagination-current {
+    background-color: #0073e6;
+    color: #fff;
+    border-color: #0073e6;
+}
+
+.currency-controls {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.currency-controls select {
+    padding: 3px 6px;
+}

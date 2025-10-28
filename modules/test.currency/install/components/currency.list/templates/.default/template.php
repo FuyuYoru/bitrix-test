@@ -1,26 +1,24 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 
-<?php if ($arParams["AJAX"] != "Y") : ?>
-<div id="currency-component" class="currency-component">
-    <form id="currency-filter" class="currency-filter">
-        <input type="text" name="CODE" placeholder="Код валюты">
-        <input type="date" name="DATE_FROM" placeholder="С даты">
-        <input type="date" name="DATE_TO" placeholder="По дату">
-        <button type="submit">Фильтр</button>
-    </form>
-
-    <div id="currency-list">
-        <?php endif; ?>
-
-        <table border="1" cellspacing="0" cellpadding="4">
-            <thead>
-            <tr>
-                <th>Код</th>
-                <th>Дата</th>
-                <th>Курс</th>
-            </tr>
-            </thead>
-            <tbody>
+<div id="currency-list">
+    <div class="currency-controls">
+        <label for="page-size">Показывать по: </label>
+        <select id="page-size" name="PAGE_SIZE">
+            <?php foreach ($arResult['PAGE_SIZE_OPTIONS'] as $size): ?>
+                <option value="<?= $size ?>" <?= $size == $arResult['PAGE_SIZE'] ? 'selected' : '' ?>><?= $size ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <table class="currency-table">
+        <thead>
+        <tr>
+            <th>Код</th>
+            <th>Дата</th>
+            <th>Курс</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (!empty($arResult["ITEMS"])): ?>
             <?php foreach ($arResult["ITEMS"] as $item): ?>
                 <tr>
                     <td><?=htmlspecialcharsbx($item["CODE"])?></td>
@@ -28,14 +26,23 @@
                     <td><?=htmlspecialcharsbx($item["COURSE"])?></td>
                 </tr>
             <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php else: ?>
+            <tr><td colspan="3">Нет данных</td></tr>
+        <?php endif; ?>
+        </tbody>
+    </table>
 
-<!--        --><?php //=$arResult["NAV"]->getNavPrint("Страницы");?>
-
-        <?php if ($arParams["AJAX"] != "Y") : ?>
+    <div class="currency-nav">
+        <?php if ($arResult["NAV"]->getPageCount() > 1): ?>
+            <?php for ($i = 1; $i <= $arResult["NAV"]->getPageCount(); $i++): ?>
+                <?php if ($i == $arResult["NAV"]->getCurrentPage()): ?>
+                    <span class="bx-pagination-current"><?= $i ?></span>
+                <?php else: ?>
+                    <a href="#" class="bx-pagination-link" data-page="<?= $i ?>"><?= $i ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+        <?php endif; ?>
     </div>
 </div>
 
-    <script src="<?=$templateFolder?>/script.js"></script>
-<?php endif; ?>
+<script src="<?= $templateFolder ?>/script.js"></script>

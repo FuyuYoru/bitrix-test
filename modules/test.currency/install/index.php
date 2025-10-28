@@ -52,11 +52,17 @@ class test_currency extends CModule
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }
 
-    public function InstallDB(): void
+    public function InstallDB()
     {
-        $connection = Application::getConnection();
+        $connection = \Bitrix\Main\Application::getConnection();
         $sql = file_get_contents(__DIR__ . '/db/mysql/install.sql');
         $connection->executeSqlBatch($sql);
+
+        // ⚡ Загружаем seed
+        $seedFile = __DIR__ . '/seeds/seed.php';
+        if (file_exists($seedFile)) {
+            include $seedFile;
+        }
     }
 
     public function UnInstallDB(): void

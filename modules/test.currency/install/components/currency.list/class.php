@@ -10,8 +10,6 @@ class CurrencyListComponent extends CBitrixComponent
 {
     public function executeComponent()
     {
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
         Loader::includeModule('test.currency');
 
         $nav = new PageNavigation("nav");

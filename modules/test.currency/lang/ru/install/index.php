@@ -1,3 +1,3 @@
-<?
-$MESS ['MY_MODULE_MODULE_NAME'] = "Мой модуль";
-$MESS ['MY_MODULE_MODULE_DESCRIPTION'] = "Модуль устанавливает компонент Карточка пользователя.";
+<?php
+$MESS ['MODULE_NAME'] = "Модуль курсы валют";
+$MESS ['MODULE_DESCRIPTION'] = "Модуль устанавливает компонент Список валют.";

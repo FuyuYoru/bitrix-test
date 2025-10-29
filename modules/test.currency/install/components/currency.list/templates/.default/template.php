@@ -4,7 +4,7 @@
     <div class="currency-controls">
         <label for="page-size">Показывать по: </label>
         <select id="page-size" name="PAGE_SIZE">
-            <?php foreach ($arResult['PAGE_SIZE_OPTIONS'] as $size): ?>
+            <?php foreach ([5, 10, 20] as $size): ?>
                 <option value="<?= $size ?>" <?= $size == $arResult['PAGE_SIZE'] ? 'selected' : '' ?>><?= $size ?></option>
             <?php endforeach; ?>
         </select>
